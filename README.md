@@ -8,7 +8,7 @@ RaNet: Relation-aware Network for Moment Localization via Language.
 ![](https://github.com/Huntersxsx/RaNet/blob/master/img/framework.png)
 
 ## Note:
-Our pre-trained models are available at [jbox](https://jbox.sjtu.edu.cn/l/215Z2T). We will release our code upon the release of our paper.
+Our pre-trained models are available at [SJTU jbox](https://jbox.sjtu.edu.cn/l/215Z2T) or [baiduyun, passcode:xmc0](https://pan.baidu.com/s/1CRojAlDURJ57tUprdNbfFg) or [Google Drive](https://drive.google.com/drive/folders/1AFdgfxFCA9ji36HaveL2dQ7wr7OjlHjb?usp=sharing). We will release our code upon the release of our paper.
 <!-- The repository contains the development code. This preview is intended for the reviewers of our AAAI2022 submission.
 The code provided allows for evaluating our pretrained models. We will release the final version of the code on our official GitHub repo soon.
 We discourage the reviewers from distributing this repository to third party users. Please follow the instructions below for the installation and download of necessary data.  -->
@@ -39,7 +39,7 @@ The folder structure should be as follows:
 ```
 .
 ├── checkpoints
-│   ├── checkpoints-paper
+│   ├── best
 │   │    ├── TACoS
 │   │    ├── ActivityNet
 │   │    └── Charades
@@ -83,7 +83,7 @@ Use the following commands for training:
 ```
 
 #### Testing
-Our trained model are provided in [jbox](https://jbox.sjtu.edu.cn/l/215Z2T). Please download them to the `checkpoints/checkpoints-paper/` folder.
+Our trained model are provided in [SJTU jbox](https://jbox.sjtu.edu.cn/l/215Z2T) or [baiduyun, passcode:xmc0](https://pan.baidu.com/s/1CRojAlDURJ57tUprdNbfFg) or [Google Drive](https://drive.google.com/drive/folders/1AFdgfxFCA9ji36HaveL2dQ7wr7OjlHjb?usp=sharing). Please download them to the `checkpoints/best/` folder.
 Use the following commands for testing:
 - For TACoS dataset, run: 
 ```bash
