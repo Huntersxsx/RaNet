@@ -1,9 +1,9 @@
-# RaNet: Relation-aware Network for Moment Localization via Language
+# RaNet: Relation-aware Video Reading Comprehension for Temporal Language Grounding
 
 ## Introduction
 
 This is an implementation repository for our work in EMNLP 2021.
-RaNet: Relation-aware Network for Moment Localization via Language. 
+**Relation-aware Video Reading Comprehension for Temporal Language Grounding**. 
 
 ![](https://github.com/Huntersxsx/RaNet/blob/master/img/framework.png)
 
@@ -121,7 +121,7 @@ Use the following commands for testing:
 
 ## Acknowledgement
 
-We greatly appreciate the [2D-Tan repository](https://github.com/microsoft/2D-TAN), [gtad repository](https://github.com/frostinassiky/gtad) and [CCNet repository](https://github.com/speedinghzl/CCNet). Please remember to cite the paper:
+We greatly appreciate the [2D-Tan repository](https://github.com/microsoft/2D-TAN), [gtad repository](https://github.com/frostinassiky/gtad) and [CCNet repository](https://github.com/speedinghzl/CCNet). Please remember to cite the papers:
 
 ```
 @InProceedings{2DTAN_2020_AAAI,
