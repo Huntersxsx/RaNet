@@ -125,6 +125,15 @@ We greatly appreciate the [2D-Tan repository](https://github.com/microsoft/2D-TA
 
 ```
 
+@misc{gao2021relationaware,
+      title={Relation-aware Video Reading Comprehension for Temporal Language Grounding}, 
+      author={Jialin Gao and Xin Sun and Mengmeng Xu and Xi Zhou and Bernard Ghanem},
+      year={2021},
+      eprint={2110.05717},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
+
 
 @InProceedings{2DTAN_2020_AAAI,
 author = {Zhang, Songyang and Peng, Houwen and Fu, Jianlong and Luo, Jiebo},
