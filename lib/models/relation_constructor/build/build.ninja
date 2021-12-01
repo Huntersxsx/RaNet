@@ -1,0 +1,26 @@
+ninja_required_version = 1.3
+cxx = c++
+nvcc = /usr/local/cuda-10.2/bin/nvcc
+
+cflags = -DTORCH_EXTENSION_NAME=rcca -DTORCH_API_INCLUDE_EXTENSION_H -isystem /home/anaconda/anaconda3/envs/torch1_1/lib/python3.6/site-packages/torch/include -isystem /home/anaconda/anaconda3/envs/torch1_1/lib/python3.6/site-packages/torch/include/torch/csrc/api/include -isystem /home/anaconda/anaconda3/envs/torch1_1/lib/python3.6/site-packages/torch/include/TH -isystem /home/anaconda/anaconda3/envs/torch1_1/lib/python3.6/site-packages/torch/include/THC -isystem /usr/local/cuda-10.2/include -isystem /home/anaconda/anaconda3/envs/torch1_1/include/python3.6m -D_GLIBCXX_USE_CXX11_ABI=0 -fPIC -std=c++11 -O3
+cuda_flags = -DTORCH_EXTENSION_NAME=rcca -DTORCH_API_INCLUDE_EXTENSION_H -isystem /home/anaconda/anaconda3/envs/torch1_1/lib/python3.6/site-packages/torch/include -isystem /home/anaconda/anaconda3/envs/torch1_1/lib/python3.6/site-packages/torch/include/torch/csrc/api/include -isystem /home/anaconda/anaconda3/envs/torch1_1/lib/python3.6/site-packages/torch/include/TH -isystem /home/anaconda/anaconda3/envs/torch1_1/lib/python3.6/site-packages/torch/include/THC -isystem /usr/local/cuda-10.2/include -isystem /home/anaconda/anaconda3/envs/torch1_1/include/python3.6m -D_GLIBCXX_USE_CXX11_ABI=0 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --compiler-options '-fPIC' --expt-extended-lambda -std=c++11
+ldflags = -shared -L/usr/local/cuda-10.2/lib64 -lcudart
+
+rule compile
+  command = $cxx -MMD -MF $out.d $cflags -c $in -o $out
+  depfile = $out.d
+  deps = gcc
+
+rule cuda_compile
+  command = $nvcc $cuda_flags -c $in -o $out
+
+rule link
+  command = $cxx $in $ldflags -o $out
+
+build lib_cffi.o: compile /home/yckj1509/CVNLP/Moment_Localization/RaNet-v2/lib/models/relation_constructor/src/lib_cffi.cpp
+build ca.cuda.o: cuda_compile /home/yckj1509/CVNLP/Moment_Localization/RaNet-v2/lib/models/relation_constructor/src/ca.cu
+
+build rcca.so: link lib_cffi.o ca.cuda.o
+
+default rcca.so
+

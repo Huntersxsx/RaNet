@@ -1,0 +1,109 @@
+WORKERS: 16
+
+MODEL_DIR: ./checkpoints/checkpoints-paper
+RESULT_DIR: ./infer_results
+LOG_DIR: ./log/log-paper
+DATA_DIR: ./data/Charades-STA
+EXPERIMENT_CFG: vgg-dot+8conv
+
+DATASET:
+  NAME: Charades
+  VIS_INPUT_TYPE: charades_vgg_rgb
+  NO_VAL: True
+  NUM_SAMPLE_CLIPS: 256
+  TARGET_STRIDE: 16
+  NORMALIZE: True
+  RANDOM_SAMPLING: False
+
+TEST:
+  BATCH_SIZE: 32
+  RECALL: 1,5
+  TIOU: 0.3,0.5,0.7
+  EVAL_TRAIN: False
+  NMS_THRESH: 0.44
+
+CUDNN:
+  DETERMINISTIC: False
+  BENCHMARK: True
+
+TRAIN:
+  BATCH_SIZE: 32
+  LR: 0.001
+  WEIGHT_DECAY: 0.0000
+  MAX_EPOCH: 15
+  CONTINUE: False
+  STEPSIZE: 15
+  GAMMA: 0.1
+  MILESTONES: [6,9]
+
+
+LOSS1:
+  NAME: bce_rescale_loss
+  PARAMS:
+    MIN_IOU: 0.5
+    MAX_IOU: 1.0
+    BIAS: 0.0
+
+RANET:
+
+  ENCODER_LAYER:
+    NAME: FeatureEncoder
+    PARAMS:
+      FRAME:
+        INPUT_SIZE: 4096
+        HIDDEN_SIZE: 512
+        KERNEL_SIZE: 16
+        STRIDE: 16
+        USE_POSITION: False
+        NUM_CLIPS: 16
+      GCNEXT:
+        INPUT_SIZE: 512
+        OUTPUT_SIZE: 512
+        K_NUM: 3
+        GROUP_NUM: 32
+        WIDTH_GROUP: 4
+      LSTM:
+        TXT_INPUT_SIZE: 300
+        TXT_HIDDEN_SIZE: 512
+        NUM_LAYERS: 3
+        BIDIRECTIONAL: True
+
+  GNERATOR_LAYER:
+    NAME: SparseBoundaryCat
+    PARAMS:
+      NUM_CLIPS: 16
+      NUM_SCALE_LAYERS: [15]
+
+  INTERACTOR_LAYER:
+    NAME: DynamicFuse
+    PARAMS:
+      HIDDEN_SIZE: 512
+      TXT_INPUT_SIZE: 512
+      VIS_INPUT_SIZE: 1024
+
+  RELATION_LAYER:
+    NAME: MapConv
+    PARAMS:
+      INPUT_SIZE: 512
+      HIDDEN_SIZES: [512, 512, 512, 512, 512, 512, 512, 512]
+      KERNEL_SIZES: [5, 5, 5, 5, 5, 5, 5, 5]
+      STRIDES: [1, 1, 1, 1, 1, 1, 1, 1]
+      PADDINGS: [16, 0, 0, 0, 0, 0, 0, 0]
+      DILATIONS: [1, 1, 1, 1, 1, 1, 1, 1]
+
+  # RELATION_LAYER:
+  #   NAME: MapConv
+  #   PARAMS:
+  #     INPUT_SIZE: 512
+  #     HIDDEN_SIZES: [512, 512, 512, 512]
+  #     KERNEL_SIZES: [5, 5, 5, 5]
+  #     STRIDES: [1, 1, 1, 1]
+  #     PADDINGS: [8, 0, 0, 0]
+  #     DILATIONS: [1, 1, 1, 1]
+
+  PRED_INPUT_SIZE: 512
+
+
+MODEL:
+  NAME: RaNet
+  CHECKPOINT: ./checkpoints/best/Charades/vgg-dynamic+8conv-2478.pkl
