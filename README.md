@@ -8,7 +8,7 @@ This is an implementation repository for our work in EMNLP 2021.
 ![](https://github.com/Huntersxsx/RaNet/blob/master/img/framework.png)
 
 ## Note:
-Our pre-trained models are available at [SJTU jbox](https://jbox.sjtu.edu.cn/l/215Z2T) or [baiduyun, passcode:xmc0](https://pan.baidu.com/s/1CRojAlDURJ57tUprdNbfFg) or [Google Drive](https://drive.google.com/drive/folders/1AFdgfxFCA9ji36HaveL2dQ7wr7OjlHjb?usp=sharing). We will release our code soon.
+Our pre-trained models are available at [SJTU jbox](https://jbox.sjtu.edu.cn/l/215Z2T) or [baiduyun, passcode:xmc0](https://pan.baidu.com/s/1CRojAlDURJ57tUprdNbfFg) or [Google Drive](https://drive.google.com/drive/folders/1AFdgfxFCA9ji36HaveL2dQ7wr7OjlHjb?usp=sharing).
 <!-- The repository contains the development code. This preview is intended for the reviewers of our AAAI2022 submission.
 The code provided allows for evaluating our pretrained models. We will release the final version of the code on our official GitHub repo soon.
 We discourage the reviewers from distributing this repository to third party users. Please follow the instructions below for the installation and download of necessary data.  -->
@@ -131,7 +131,6 @@ We greatly appreciate the [2D-Tan repository](https://github.com/microsoft/2D-TA
   journal={arXiv preprint arXiv:2110.05717},
   year={2021}
 }
-
 
 @InProceedings{2DTAN_2020_AAAI,
 author = {Zhang, Songyang and Peng, Houwen and Fu, Jianlong and Luo, Jiebo},
