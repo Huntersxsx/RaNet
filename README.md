@@ -31,7 +31,7 @@ To use this source code, you need Python3.7+ and a few python3 packages:
 - tqdm
 
 ## Data
-We use the data offered by [2D-TAN](https://rochester.app.box.com/s/8znalh6y5e82oml2lr7to8s6ntab6mav).
+We use the data offered by [2D-TAN](https://github.com/microsoft/2D-TAN/tree/master/data), and the extracted features can be found at [Box](https://rochester.app.box.com/s/8znalh6y5e82oml2lr7to8s6ntab6mav/folder/137471266949).
 
 </br>
 
@@ -125,10 +125,11 @@ We greatly appreciate the [2D-Tan repository](https://github.com/microsoft/2D-TA
 
 ```
 
-@article{gao2021relation,
+@inproceedings{gao2021relation,
   title={Relation-aware Video Reading Comprehension for Temporal Language Grounding},
   author={Gao, Jialin and Sun, Xin and Xu, Mengmeng and Zhou, Xi and Ghanem, Bernard},
-  journal={arXiv preprint arXiv:2110.05717},
+  booktitle={Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing},
+  pages={3978--3988},
   year={2021}
 }
 
